@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Da Cheese</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffeb99, #ffcc66);
+      color: #5a3b00;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    header {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #4a2c00;
+      text-shadow: 2px 2px #fff0c7;
+      margin-bottom: 2rem;
+    }
+    .container {
+      max-width: 600px;
+      width: 90%;
+      background: #fff4c2;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 18px rgba(90, 59, 0, 0.3);
+      text-align: center;
+      border: 3px solid #e0a300;
+    }
+    .code-box input {
+      padding: 0.7rem;
+      font-size: 1.1rem;
+      border: 2px solid #e0a300;
+      border-radius: 10px;
+      width: 65%;
+      outline: none;
+      background: #fffbe5;
+      color: #4a2c00;
+    }
+    .code-box button {
+      padding: 0.7rem 1.2rem;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      background: #ffb347;
+      color: #4a2c00;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .code-box button:hover {
+      background: #e69500;
+      color: #fffbe5;
+    }
+    iframe {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>🧀 Da Cheese 🧀</header>
+
+  <!-- Login container -->
+  <div class="container" id="loginBox">
+    <h2>Enter Secret Code</h2>
+    <div class="code-box">
+      <input type="text" id="codeInput" placeholder="Enter code...">
+      <button onclick="checkCode()">Unlock</button>
+    </div>
+  </div>
+
+  <!-- Hidden iframe -->
+  <iframe id="siteFrame" src="lusheng.html"></iframe>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById('codeInput').value.toLowerCase().replace(/\\s/g, '');
+      if (code === 'strawberryelephant') {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('siteFrame').style.display = 'block';
+      } else {
+        alert('Wrong code, try again!');
+      }
+    }
+  </script>
+</body>
+</html>
