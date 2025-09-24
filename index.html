@@ -2,132 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Welcome</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body, html {
-        height: 100%;
-        font-family: 'Poppins', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #ffb347, #ffcc33, #ff6f61);
-        overflow: hidden;
-        cursor: none;
-    }
-
-    /* Animated interactive "Da Cheese" text */
-    .title {
-        font-size: 4rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        color: #fff;
-        text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
-        position: relative;
-        margin-bottom: 50px;
-        transition: transform 0.1s ease;
-    }
-
-    /* Password container */
-    .password-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: rgba(255,255,255,0.15);
-        padding: 40px;
-        border-radius: 20px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
-        text-align: center;
-    }
-
-    input[type="password"] {
-        padding: 12px 20px;
-        border-radius: 10px;
-        border: none;
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        outline: none;
-        text-align: center;
-    }
-
-    button {
-        padding: 12px 25px;
-        border-radius: 10px;
-        border: none;
-        background: #fff;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 1.1rem;
-    }
-
-    button:hover {
-        background: #ffeb99;
-        transform: scale(1.05);
-    }
-
-    .error {
-        color: #ff4444;
-        margin-top: 10px;
-        font-weight: 600;
-        display: none;
-    }
-
-    /* Optional: subtle floating animation for title */
-    @keyframes float {
-        0% { transform: translateY(0); }
-        50% { transform: translateY(-15px); }
-        100% { transform: translateY(0); }
-    }
-
-    .title {
-        animation: float 3s ease-in-out infinite;
-    }
+body {
+  background: #1e1e2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+#daCheese { 
+  font-size: 48px; 
+  font-weight: bold; 
+  color: #ffdd57; 
+  animation: floatText 3s ease-in-out infinite; 
+}
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #ffdd57;
+  color: #000;
+  margin-top: 20px;
+}
 </style>
 </head>
 <body>
 
-<div class="password-container">
-    <div class="title" id="title">Da Cheese</div>
-    <input type="password" id="pass" placeholder="Enter password">
-    <button onclick="checkPassword()">Enter</button>
-    <div class="error" id="errorMsg">Incorrect password!</div>
-</div>
-
-<script>
-    const DEFAULT_PASSWORD = "letmein";
-    const SPECIAL_PASSWORD = "starwars";
-
-    function checkPassword() {
-        const input = document.getElementById('pass').value.toLowerCase();
-        const error = document.getElementById('errorMsg');
-
-        if(input === DEFAULT_PASSWORD) {
-            window.location.href = "lusheng.html";
-        } else if(input === SPECIAL_PASSWORD) {
-            window.location.href = "StarWarsMovie.html";
-        } else {
-            error.style.display = "block";
-        }
-    }
-
-    // Press Enter to submit
-    document.getElementById('pass').addEventListener('keyup', function(e) {
-        if(e.key === "Enter") checkPassword();
-    });
-
-    // Make "Da Cheese" follow the mouse
-    const title = document.getElementById('title');
-    document.addEventListener('mousemove', e => {
-        const x = e.clientX / window.innerWidth - 0.5;
-        const y = e.clientY / window.innerHeight - 0.5;
-        title.style.transform = `translate(${x*30}px, ${y*30}px) rotate(${x*10}deg)`;
-    });
-</script>
+<div id="daCheese">Da Cheese 🧀</div>
+<button onclick="location.href='lusheng.html'">Enter</button>
 
 </body>
 </html>
