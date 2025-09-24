@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Welcome</title>
+<style>
+body {
+  background: #1e1e2f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+#daCheese { 
+  font-size: 48px; 
+  font-weight: bold; 
+  color: #ffdd57; 
+  animation: floatText 3s ease-in-out infinite; 
+}
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #ffdd57;
+  color: #000;
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<div id="daCheese">Da Cheese 🧀</div>
+<button onclick="location.href='lusheng.html'">Enter</button>
+
+</body>
+</html>
