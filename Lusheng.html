@@ -3,160 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lusheng - Self-Contained Game Hub</title>
+<title>Da Cheese Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #FCEAB7; /* grilled cheese tan */
-    color: #6B3E00;       /* dark brown text */
-  }
-
-  h1 {
-    text-align: center;
-    margin: 10px 0;
-  }
-
-  .container {
-    display: flex;
-    height: calc(100vh - 50px);
-    overflow: hidden;
-  }
-
-  .sidebar {
-    width: 250px;
-    background: #FFD966; /* grilled cheese yellow */
-    padding: 10px;
-    overflow-y: auto;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-  }
-
-  .search-box {
-    width: 100%;
-    padding: 6px;
-    margin-bottom: 10px;
-    border: 1px solid #FFC94C;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-
-  .sidebar button {
-    width: 100%;
-    margin: 4px 0;
-    padding: 8px;
-    background: #FFEB99;
-    border: 1px solid #FFC94C;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 14px;
-    color: #6B3E00;
-  }
-
-  .sidebar button:hover {
-    background: #FFE066;
-  }
-
-  .game-display {
-    flex: 1;
-    background: #FFF4CC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  object {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
+    body, html { margin: 0; font-family: 'Poppins', sans-serif; height: 100%; background: linear-gradient(135deg, #ffcc33, #ff6600); display: flex; flex-direction: column; }
+    .tabs { display: flex; justify-content: flex-end; gap: 15px; padding: 15px; }
+    .tab { padding: 10px 20px; border-radius: 12px; background: rgba(255,255,255,0.9); font-weight: 600; cursor: pointer; transition: 0.3s; text-decoration: none; color:#333; }
+    .tab:hover { background: rgba(255,255,255,1); }
+    .center { flex: 1; display: flex; justify-content: center; align-items: center; font-size: 4rem; font-weight: 900; color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); }
 </style>
 </head>
 <body>
-<h1>Lusheng - Self-Contained Game Hub</h1>
-<div class="container">
-  <div class="sidebar">
-    <input type="text" id="search" class="search-box" placeholder="Search games...">
-    <div id="game-list">
-      <!-- Buttons generated here -->
-    </div>
-  </div>
-  <div class="game-display">
-    <object id="game-frame" type="text/html" data=""></object>
-  </div>
+
+<div class="tabs">
+    <a class="tab" href="dolladolla/index.html">Soundboard</a>
+    <a class="tab" href="aonosumika/index.html">Proxy</a>
+    <a class="tab" href="games.html">Games</a>
+    <a class="tab" href="youtube-unblcked-master/index.html">YouTube</a>
 </div>
 
-<script>
-  const gameFolders = [
-    ".github","1on1soccer","1v1lol","2048","2drocketleague","60sburgerrun",
-    "achieveunlocked","achieveunlocked2","adarkroom","adofai","adventure-capitalist",
-    "ageofwar","amazing-rope-police","amongus","avalanche","awesometanks","ayun",
-    "badicecream","badicecream2","badicecream3","badpiggies","badtimesimulator",
-    "baldis-basics","ballisticchickens","basketball-stars","basketbros","basketrandom",
-    "bit-planes","bitlife","bloodtournament","bobtherobber2","boxingphysics2","boxingrandom",
-    "breakingthebank","btd","btd2","btd3","btd4","btd5","btd6","bubbleshooter",
-    "burgerandfrights","burritobison","celeste","cell-machine","championisland","chess",
-    "chibiknight","circloo","clickerheroes","cluster-rush","cmm-client","colorswitch",
-    "commodoreclicker","cookieclicker","crossyroad","csgoclicker","cubefield","cuttherope",
-    "cuttherope-holiday","dadish","dadish2","dadish3","dante","deal","death-run-3d",
-    "dino","dogeminer","doodlejump","doom","drag","dragonballdevolution","drift-boss",
-    "drifthunters","drivemad","ducklife1","ducklife2","ducklife3","ducklife4","ducklife5",
-    "ducklife6","emulatorjs","escapingtheprison","factoryballs","factoryballsforever",
-    "fancypantsadventures","fancypantsadventures2","fireboywatergirl","fireboywatergirl2",
-    "fireboywatergirl3","fireboywatergirl4","flappybird","flappyplane","fleeingthecomplex",
-    "flippyfish","fluidsim","fnaf","fnaf2","fnaf3","fnaf4","fridaynightfunkin","fruitninja",
-    "funnyballgame","funnymadracing","funnyshooter","funnyshooter2","gamemaker","gba","gdlite",
-    "geometrydash","geometryrash","getawayshooter","golddiggerfrvr","guiltygear","gunmayhem",
-    "gunmayhem2","gunmayhemredux","halloween2016","happywheels","helixjump","hexgl","hextris",
-    "hillclimbracing2","holeio","idlebreakout","img","inf","infiltratingtheairship","iwbtc",
-    "jetpackjoyride","js","justfalllol","knifehit","lasthorizon","lazyjump3d","learntofly",
-    "learntofly2","learntoflyidle","linerider","littlealchemy","lowsadventures2","madalincars",
-    "mario","mcclassic","metroidzeromission","minecraft-tower-defence-2","minesweeper","monkeymart",
-    "monstertracks","motox3m","motox3m-pool","motox3m-spooky","motox3m-winter","ngon","nutsim",
-    "ocarinaoftime","offline-mc","offlineparadise","online-mc","osu","osumania","ovo","pacman",
-    "pandemic","pandemic2","papasburgeria","papasfreezeria","papaspizzeria","paperio","pi",
-    "pizzatower","pokemon","pong","pool","poom","pre","redball3","redball4","redball4vol2",
-    "redball4vol3","retrobowl","retrobowlcollege","riddleschool","riddleschool2","riddleschool3",
-    "riddleschool4","riddleschool5","riddleschooltransfer","riddleschooltransfer2","risehigher",
-    "rocketleague","rooftopsnipers","rooftopsnipers2","ruffle","run","run2","run3",
-    "russiancardriver","sand","sandtrix","shadow","skibiditoilet","skibiditoiletattack","skills",
-    "slope","slope-ball","slope2","slope3","snake","snow","snowrider3d","soccerrandom","solitaire",
-    "soundboard","space","spankthemonkey","sprinter","stack","stealingthediamond","stickman-hook",
-    "stickmanboost","stickmanclimb","stickmangolf","subway-surfers-ny","superhot","supermario64",
-    "supermeatboy","supersmashbros","supersmashflash","tabs","templerun2","tetris","thefinalearth2",
-    "theimpossiblegame","theimpossiblequiz","themebgs","thereisnogame","thirtydollarwebsite",
-    "thisistheonlylevel","thisistheonlylevel2","timeshooter1","timeshooter2","timeshooter3",
-    "tinyfishing","townscaper","tron","tu46","tu95","tube-jumpers","tunnelrush","turbowarp",
-    "universal-paperclips","vex","vex2","vex3","vex4","vex5","vex6","vex7","wallsmash",
-    "watermelongame","wbwwb","weavesilk","webretro","win11","wordle","wordlebot",
-    "worldhardestgame2","worldshardestgame","xp","xx142-b2.exe","yohoho","zombocalypse"
-  ];
+<div class="center">
+    🧀 Da Cheese
+</div>
 
-  const gameListDiv = document.getElementById("game-list");
-  const gameFrame = document.getElementById("game-frame");
-
-  function createButtons(filter = "") {
-    gameListDiv.innerHTML = "";
-    gameFolders
-      .filter(f => f.toLowerCase().includes(filter.toLowerCase()))
-      .forEach(folder => {
-        const btn = document.createElement("button");
-        btn.textContent = folder;
-        btn.addEventListener("click", () => {
-          gameFrame.data = folder + "/index.html";
-        });
-        gameListDiv.appendChild(btn);
-      });
-  }
-
-  // initial load
-  createButtons();
-
-  // search filter
-  const searchInput = document.getElementById("search");
-  searchInput.addEventListener("input", () => {
-    createButtons(searchInput.value);
-  });
-</script>
 </body>
 </html>
