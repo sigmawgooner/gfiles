@@ -3,160 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lusheng - Self-Contained Game Hub</title>
+<title>Games Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #FCEAB7; /* grilled cheese tan */
-    color: #6B3E00;       /* dark brown text */
-  }
-
-  h1 {
-    text-align: center;
-    margin: 10px 0;
-  }
-
-  .container {
-    display: flex;
-    height: calc(100vh - 50px);
-    overflow: hidden;
-  }
-
-  .sidebar {
-    width: 250px;
-    background: #FFD966; /* grilled cheese yellow */
-    padding: 10px;
-    overflow-y: auto;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-  }
-
-  .search-box {
-    width: 100%;
-    padding: 6px;
-    margin-bottom: 10px;
-    border: 1px solid #FFC94C;
-    border-radius: 6px;
-    font-size: 14px;
-  }
-
-  .sidebar button {
-    width: 100%;
-    margin: 4px 0;
-    padding: 8px;
-    background: #FFEB99;
-    border: 1px solid #FFC94C;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: left;
-    font-size: 14px;
-    color: #6B3E00;
-  }
-
-  .sidebar button:hover {
-    background: #FFE066;
-  }
-
-  .game-display {
-    flex: 1;
-    background: #FFF4CC;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  object {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
+    body, html {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ffcc33, #ff6600);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .top-nav {
+        display: flex;
+        justify-content: flex-start;
+        padding: 15px;
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .nav-button {
+        margin-right: 15px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        background: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        color: #333;
+        transition: 0.3s;
+    }
+    .nav-button:hover {
+        background: #ffeb99;
+        transform: translateY(-2px);
+    }
+    .games-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        padding: 20px;
+        flex: 1;
+    }
+    .game-button {
+        padding: 15px;
+        background: rgba(255,255,255,0.9);
+        text-align: center;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+        color: #333;
+    }
+    .game-button:hover {
+        background: #ffeb99;
+        transform: scale(1.05);
+    }
 </style>
 </head>
 <body>
-<h1>Lusheng - Self-Contained Game Hub</h1>
-<div class="container">
-  <div class="sidebar">
-    <input type="text" id="search" class="search-box" placeholder="Search games...">
-    <div id="game-list">
-      <!-- Buttons generated here -->
-    </div>
-  </div>
-  <div class="game-display">
-    <object id="game-frame" type="text/html" data=""></object>
-  </div>
+
+<div class="top-nav">
+    <a class="nav-button" href="lusheng.html">Back to Hub</a>
 </div>
 
-<script>
-  const gameFolders = [
-    ".github","1on1soccer","1v1lol","2048","2drocketleague","60sburgerrun",
-    "achieveunlocked","achieveunlocked2","adarkroom","adofai","adventure-capitalist",
-    "ageofwar","amazing-rope-police","amongus","avalanche","awesometanks","ayun",
-    "badicecream","badicecream2","badicecream3","badpiggies","badtimesimulator",
-    "baldis-basics","ballisticchickens","basketball-stars","basketbros","basketrandom",
-    "bit-planes","bitlife","bloodtournament","bobtherobber2","boxingphysics2","boxingrandom",
-    "breakingthebank","btd","btd2","btd3","btd4","btd5","btd6","bubbleshooter",
-    "burgerandfrights","burritobison","celeste","cell-machine","championisland","chess",
-    "chibiknight","circloo","clickerheroes","cluster-rush","cmm-client","colorswitch",
-    "commodoreclicker","cookieclicker","crossyroad","csgoclicker","cubefield","cuttherope",
-    "cuttherope-holiday","dadish","dadish2","dadish3","dante","deal","death-run-3d",
-    "dino","dogeminer","doodlejump","doom","drag","dragonballdevolution","drift-boss",
-    "drifthunters","drivemad","ducklife1","ducklife2","ducklife3","ducklife4","ducklife5",
-    "ducklife6","emulatorjs","escapingtheprison","factoryballs","factoryballsforever",
-    "fancypantsadventures","fancypantsadventures2","fireboywatergirl","fireboywatergirl2",
-    "fireboywatergirl3","fireboywatergirl4","flappybird","flappyplane","fleeingthecomplex",
-    "flippyfish","fluidsim","fnaf","fnaf2","fnaf3","fnaf4","fridaynightfunkin","fruitninja",
-    "funnyballgame","funnymadracing","funnyshooter","funnyshooter2","gamemaker","gba","gdlite",
-    "geometrydash","geometryrash","getawayshooter","golddiggerfrvr","guiltygear","gunmayhem",
-    "gunmayhem2","gunmayhemredux","halloween2016","happywheels","helixjump","hexgl","hextris",
-    "hillclimbracing2","holeio","idlebreakout","img","inf","infiltratingtheairship","iwbtc",
-    "jetpackjoyride","js","justfalllol","knifehit","lasthorizon","lazyjump3d","learntofly",
-    "learntofly2","learntoflyidle","linerider","littlealchemy","lowsadventures2","madalincars",
-    "mario","mcclassic","metroidzeromission","minecraft-tower-defence-2","minesweeper","monkeymart",
-    "monstertracks","motox3m","motox3m-pool","motox3m-spooky","motox3m-winter","ngon","nutsim",
-    "ocarinaoftime","offline-mc","offlineparadise","online-mc","osu","osumania","ovo","pacman",
-    "pandemic","pandemic2","papasburgeria","papasfreezeria","papaspizzeria","paperio","pi",
-    "pizzatower","pokemon","pong","pool","poom","pre","redball3","redball4","redball4vol2",
-    "redball4vol3","retrobowl","retrobowlcollege","riddleschool","riddleschool2","riddleschool3",
-    "riddleschool4","riddleschool5","riddleschooltransfer","riddleschooltransfer2","risehigher",
-    "rocketleague","rooftopsnipers","rooftopsnipers2","ruffle","run","run2","run3",
-    "russiancardriver","sand","sandtrix","shadow","skibiditoilet","skibiditoiletattack","skills",
-    "slope","slope-ball","slope2","slope3","snake","snow","snowrider3d","soccerrandom","solitaire",
-    "soundboard","space","spankthemonkey","sprinter","stack","stealingthediamond","stickman-hook",
-    "stickmanboost","stickmanclimb","stickmangolf","subway-surfers-ny","superhot","supermario64",
-    "supermeatboy","supersmashbros","supersmashflash","tabs","templerun2","tetris","thefinalearth2",
-    "theimpossiblegame","theimpossiblequiz","themebgs","thereisnogame","thirtydollarwebsite",
-    "thisistheonlylevel","thisistheonlylevel2","timeshooter1","timeshooter2","timeshooter3",
-    "tinyfishing","townscaper","tron","tu46","tu95","tube-jumpers","tunnelrush","turbowarp",
-    "universal-paperclips","vex","vex2","vex3","vex4","vex5","vex6","vex7","wallsmash",
-    "watermelongame","wbwwb","weavesilk","webretro","win11","wordle","wordlebot",
-    "worldhardestgame2","worldshardestgame","xp","xx142-b2.exe","yohoho","zombocalypse"
-  ];
+<div class="games-container">
+    <a class="game-button" href="#">2048</a>
+    <a class="game-button" href="#">adarkroom</a>
+    <a class="game-button" href="#">asciispace</a>
+    <a class="game-button" href="#">assessmentexamination</a>
+    <a class="game-button" href="#">asteroids</a>
+    <a class="game-button" href="#">astray</a>
+    <a class="game-button" href="#">backcountry</a>
+    <a class="game-button" href="#">basketballlegends</a>
+    <a class="game-button" href="#">basketballstars</a>
+    <a class="game-button" href="#">basketbrosio</a>
+    <a class="game-button" href="#">basketrandom</a>
+    <a class="game-button" href="#">bitlife</a>
+    <a class="game-button" href="#">blackholesquare</a>
+    <a class="game-button" href="#">bounceback</a>
+    <a class="game-button" href="#">boxingrandom</a>
+    <a class="game-button" href="#">breaklock</a>
+    <a class="game-button" href="#">breakout</a>
+    <a class="game-button" href="#">btd4</a>
+    <a class="game-button" href="#">captaincallisto</a>
+    <a class="game-button" href="#">chess</a>
+    <a class="game-button" href="#">chromaincident</a>
+    <a class="game-button" href="#">chromedino</a>
+    <a class="game-button" href="#">clickerheroes</a>
+    <a class="game-button" href="#">clusterrush</a>
+    <a class="game-button" href="#">connect3</a>
+    <a class="game-button" href="#">cookieclicker</a>
+    <a class="game-button" href="#">crossyroad</a>
+    <a class="game-button" href="#">csgoclicker</a>
+    <a class="game-button" href="#">cubefield</a>
+    <a class="game-button" href="#">cubitomayhem</a>
+    <a class="game-button" href="#">cuttherope</a>
+    <a class="game-button" href="#">cuttheropeholiday</a>
+    <a class="game-button" href="#">cuttheropetimetravel</a>
+    <a class="game-button" href="#">deathrun3d</a>
+    <a class="game-button" href="#">deepestsword</a>
+    <a class="game-button" href="#">doodlejump</a>
+    <a class="game-button" href="#">doom</a>
+    <a class="game-button" href="#">drawthehill</a>
+    <a class="game-button" href="#">drift</a>
+    <a class="game-button" href="#">drifthunters</a>
+    <a class="game-button" href="#">drivemad</a>
+    <a class="game-button" href="#">ducklife</a>
+    <a class="game-button" href="#">ducklife2</a>
+    <a class="game-button" href="#">ducklife3</a>
+    <a class="game-button" href="#">earntodie</a>
+    <a class="game-button" href="#">edgenotfound</a>
+    <a class="game-button" href="#">eggycar</a>
+    <a class="game-button" href="#">evilglitch</a>
+    <a class="game-button" href="#">factoryballsforever</a>
+    <a class="game-button" href="#">fireboyandwatergirlforesttemple</a>
+    <a class="game-button" href="#">flappy2048</a>
+    <a class="game-button" href="#">flappybird</a>
+    <a class="game-button" href="#">flappyplane</a>
+    <a class="game-button" href="#">flightsimulator</a>
+    <a class="game-button" href="#">fridaynightfunkin</a>
+    <a class="game-button" href="#">friendlyfire</a>
+    <a class="game-button" href="#">fruitninja</a>
+    <a class="game-button" href="#">getawayshootoutnew</a>
+    <a class="game-button" href="#">googlesnake</a>
+    <a class="game-button" href="#">gopherkart</a>
+    <a class="game-button" href="#">grindcraft</a>
+    <a class="game-button" href="#">hexgl</a>
+    <a class="game-button" href="#">hextris</a>
+    <a class="game-button" href="#">konnekt</a>
+    <a class="game-button" href="#">letssurf</a>
+    <a class="game-button" href="#">littlealchemy</a>
+    <a class="game-button" href="#">mergeroundracers</a>
+    <a class="game-button" href="#">monkeymart</a>
+    <a class="game-button" href="#">motox3m</a>
+    <a class="game-button" href="#">ninjavsevilcorp</a>
+    <a class="game-button" href="#">ovo2</a>
+    <a class="game-button" href="#">packabunchas</a>
+    <a class="game-button" href="#">pacman</a>
+    <a class="game-button" href="#">paperio</a>
+    <a class="game-button" href="#">particleclicker</a>
+    <a class="game-button" href="#">pushback</a>
+    <a class="game-button" href="#">q1k3</a>
+    <a class="game-button" href="#">r3</a>
+    <a class="game-button" href="#">racer</a>
+    <a class="game-button" href="#">radiusraid</a>
+    <a class="game-button" href="#">redball4</a>
+    <a class="game-button" href="#">retrobowl</a>
+    <a class="game-button" href="#">retrohaunt</a>
+    <a class="game-button" href="#">riddleschool2</a>
+    <a class="game-button" href="#">ritz</a>
+    <a class="game-button" href="#">roadblocks</a>
+    <a class="game-button" href="#">rooftopsnipers</a>
+    <a class="game-button" href="#">run3</a>
+    <a class="game-button" href="#">shuttledeck</a>
+    <a class="game-button" href="#">sleepingbeauty</a>
+    <a class="game-button" href="#">slitherio</a>
+    <a class="game-button" href="#">slope</a>
+    <a class="game-button" href="#">slope2</a>
+    <a class="game-button" href="#">snake</a>
+    <a class="game-button" href="#">snowbattle</a>
+    <a class="game-button" href="#">soccerrandom</a>
+    <a class="game-button" href="#">solitaire</a>
+    <a class="game-button" href="#">spacecompany</a>
+    <a class="game-button" href="#">spacegarden</a>
+    <a class="game-button" href="#">spacehuggers</a>
+    <a class="game-button" href="#">spaceinvaders</a>
+    <a class="game-button" href="#">stack</a>
+    <a class="game-button" href="#">stackball</a>
+    <a class="game-button" href="#">stickman-hook</a>
+    <a class="game-button" href="#">stickmanboost</a>
+    <a class="game-button" href="#">stickmanclimb</a>
+    <a class="game-button" href="#">stickmangolf</a>
+    <a class="game-button" href="#">stickmanhook</a>
+    <a class="game-button" href="#">stickmansurvival</a>
+    <a class="game-button" href="#">subwaysurfers</a>
+    <a class="game-button" href="#">subwaysurfersny</a>
+    <a class="game-button" href="#">subwaysurferssingapore</a>
+    <a class="game-button" href="#">tetris</a>
+    <a class="game-button" href="#">themazeofspacegoblins</a>
+    <a class="game-button" href="#">timeshooter</a>
+    <a class="game-button" href="#">timeshooter2</a>
+    <a class="game-button" href="#">timeshooter3</a>
+    <a class="game-button" href="#">tinyfishing</a>
+    <a class="game-button" href="#">tombofthemask</a>
+    <a class="game-button" href="#">topspeedracing3d</a>
+    <a class="game-button" href="#">towermaster</a>
+    <a class="game-button" href="#">trimps</a>
+    <a class="game-button" href="#">tunnelrush</a>
+    <a class="game-button" href="#">vex3</a>
+    <a class="game-button" href="#">vex4</a>
+    <a class="game-button" href="#">vex5</a>
+    <a class="game-button" href="#">vex6</a>
+    <a class="game-button" href="#">webecomewhatwebehold</a>
+    <a class="game-button" href="#">worldshardestgame2</a>
+    <a class="game-button" href="#">xx142b2exe</a>
+    <a class="game-button" href="#">zombsroyale</a>
+</div>
 
-  const gameListDiv = document.getElementById("game-list");
-  const gameFrame = document.getElementById("game-frame");
-
-  function createButtons(filter = "") {
-    gameListDiv.innerHTML = "";
-    gameFolders
-      .filter(f => f.toLowerCase().includes(filter.toLowerCase()))
-      .forEach(folder => {
-        const btn = document.createElement("button");
-        btn.textContent = folder;
-        btn.addEventListener("click", () => {
-          gameFrame.data = folder + "/index.html";
-        });
-        gameListDiv.appendChild(btn);
-      });
-  }
-
-  // initial load
-  createButtons();
-
-  // search filter
-  const searchInput = document.getElementById("search");
-  searchInput.addEventListener("input", () => {
-    createButtons(searchInput.value);
-  });
-</script>
 </body>
 </html>
