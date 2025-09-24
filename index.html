@@ -3,201 +3,131 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games Hub</title>
+<title>Welcome</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body, html {
-        margin: 0;
+        height: 100%;
         font-family: 'Poppins', sans-serif;
-        background: linear-gradient(135deg, #ffcc33, #ff6600);
-        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ffb347, #ffcc33, #ff6f61);
+        overflow: hidden;
+        cursor: none;
+    }
+
+    /* Animated interactive "Da Cheese" text */
+    .title {
+        font-size: 4rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #fff;
+        text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+        position: relative;
+        margin-bottom: 50px;
+        transition: transform 0.1s ease;
+    }
+
+    /* Password container */
+    .password-container {
         display: flex;
         flex-direction: column;
-    }
-    .top-nav {
-        display: flex;
-        justify-content: flex-start;
-        padding: 15px;
-        background: rgba(255,255,255,0.9);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-    .nav-button {
-        margin-right: 15px;
-        padding: 10px 20px;
-        border-radius: 10px;
-        background: #fff;
-        font-weight: 600;
-        text-decoration: none;
-        color: #333;
-        transition: 0.3s;
-    }
-    .nav-button:hover {
-        background: #ffeb99;
-        transform: translateY(-2px);
-    }
-    .games-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        padding: 20px;
-        flex: 1;
-    }
-    .game-button {
-        padding: 15px;
-        background: rgba(255,255,255,0.9);
+        align-items: center;
+        background: rgba(255,255,255,0.15);
+        padding: 40px;
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.2);
         text-align: center;
-        border-radius: 12px;
-        font-weight: 600;
+    }
+
+    input[type="password"] {
+        padding: 12px 20px;
+        border-radius: 10px;
+        border: none;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        outline: none;
+        text-align: center;
+    }
+
+    button {
+        padding: 12px 25px;
+        border-radius: 10px;
+        border: none;
+        background: #fff;
+        font-weight: 700;
         cursor: pointer;
         transition: 0.3s;
-        text-decoration: none;
-        color: #333;
+        font-size: 1.1rem;
     }
-    .game-button:hover {
+
+    button:hover {
         background: #ffeb99;
         transform: scale(1.05);
+    }
+
+    .error {
+        color: #ff4444;
+        margin-top: 10px;
+        font-weight: 600;
+        display: none;
+    }
+
+    /* Optional: subtle floating animation for title */
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0); }
+    }
+
+    .title {
+        animation: float 3s ease-in-out infinite;
     }
 </style>
 </head>
 <body>
 
-<div class="top-nav">
-    <a class="nav-button" href="lusheng.html">Back to Hub</a>
+<div class="password-container">
+    <div class="title" id="title">Da Cheese</div>
+    <input type="password" id="pass" placeholder="Enter password">
+    <button onclick="checkPassword()">Enter</button>
+    <div class="error" id="errorMsg">Incorrect password!</div>
 </div>
 
-<div class="games-container">
-    <a class="game-button" href="#">2048</a>
-    <a class="game-button" href="#">adarkroom</a>
-    <a class="game-button" href="#">asciispace</a>
-    <a class="game-button" href="#">assessmentexamination</a>
-    <a class="game-button" href="#">asteroids</a>
-    <a class="game-button" href="#">astray</a>
-    <a class="game-button" href="#">backcountry</a>
-    <a class="game-button" href="#">basketballlegends</a>
-    <a class="game-button" href="#">basketballstars</a>
-    <a class="game-button" href="#">basketbrosio</a>
-    <a class="game-button" href="#">basketrandom</a>
-    <a class="game-button" href="#">bitlife</a>
-    <a class="game-button" href="#">blackholesquare</a>
-    <a class="game-button" href="#">bounceback</a>
-    <a class="game-button" href="#">boxingrandom</a>
-    <a class="game-button" href="#">breaklock</a>
-    <a class="game-button" href="#">breakout</a>
-    <a class="game-button" href="#">btd4</a>
-    <a class="game-button" href="#">captaincallisto</a>
-    <a class="game-button" href="#">chess</a>
-    <a class="game-button" href="#">chromaincident</a>
-    <a class="game-button" href="#">chromedino</a>
-    <a class="game-button" href="#">clickerheroes</a>
-    <a class="game-button" href="#">clusterrush</a>
-    <a class="game-button" href="#">connect3</a>
-    <a class="game-button" href="#">cookieclicker</a>
-    <a class="game-button" href="#">crossyroad</a>
-    <a class="game-button" href="#">csgoclicker</a>
-    <a class="game-button" href="#">cubefield</a>
-    <a class="game-button" href="#">cubitomayhem</a>
-    <a class="game-button" href="#">cuttherope</a>
-    <a class="game-button" href="#">cuttheropeholiday</a>
-    <a class="game-button" href="#">cuttheropetimetravel</a>
-    <a class="game-button" href="#">deathrun3d</a>
-    <a class="game-button" href="#">deepestsword</a>
-    <a class="game-button" href="#">doodlejump</a>
-    <a class="game-button" href="#">doom</a>
-    <a class="game-button" href="#">drawthehill</a>
-    <a class="game-button" href="#">drift</a>
-    <a class="game-button" href="#">drifthunters</a>
-    <a class="game-button" href="#">drivemad</a>
-    <a class="game-button" href="#">ducklife</a>
-    <a class="game-button" href="#">ducklife2</a>
-    <a class="game-button" href="#">ducklife3</a>
-    <a class="game-button" href="#">earntodie</a>
-    <a class="game-button" href="#">edgenotfound</a>
-    <a class="game-button" href="#">eggycar</a>
-    <a class="game-button" href="#">evilglitch</a>
-    <a class="game-button" href="#">factoryballsforever</a>
-    <a class="game-button" href="#">fireboyandwatergirlforesttemple</a>
-    <a class="game-button" href="#">flappy2048</a>
-    <a class="game-button" href="#">flappybird</a>
-    <a class="game-button" href="#">flappyplane</a>
-    <a class="game-button" href="#">flightsimulator</a>
-    <a class="game-button" href="#">fridaynightfunkin</a>
-    <a class="game-button" href="#">friendlyfire</a>
-    <a class="game-button" href="#">fruitninja</a>
-    <a class="game-button" href="#">getawayshootoutnew</a>
-    <a class="game-button" href="#">googlesnake</a>
-    <a class="game-button" href="#">gopherkart</a>
-    <a class="game-button" href="#">grindcraft</a>
-    <a class="game-button" href="#">hexgl</a>
-    <a class="game-button" href="#">hextris</a>
-    <a class="game-button" href="#">konnekt</a>
-    <a class="game-button" href="#">letssurf</a>
-    <a class="game-button" href="#">littlealchemy</a>
-    <a class="game-button" href="#">mergeroundracers</a>
-    <a class="game-button" href="#">monkeymart</a>
-    <a class="game-button" href="#">motox3m</a>
-    <a class="game-button" href="#">ninjavsevilcorp</a>
-    <a class="game-button" href="#">ovo2</a>
-    <a class="game-button" href="#">packabunchas</a>
-    <a class="game-button" href="#">pacman</a>
-    <a class="game-button" href="#">paperio</a>
-    <a class="game-button" href="#">particleclicker</a>
-    <a class="game-button" href="#">pushback</a>
-    <a class="game-button" href="#">q1k3</a>
-    <a class="game-button" href="#">r3</a>
-    <a class="game-button" href="#">racer</a>
-    <a class="game-button" href="#">radiusraid</a>
-    <a class="game-button" href="#">redball4</a>
-    <a class="game-button" href="#">retrobowl</a>
-    <a class="game-button" href="#">retrohaunt</a>
-    <a class="game-button" href="#">riddleschool2</a>
-    <a class="game-button" href="#">ritz</a>
-    <a class="game-button" href="#">roadblocks</a>
-    <a class="game-button" href="#">rooftopsnipers</a>
-    <a class="game-button" href="#">run3</a>
-    <a class="game-button" href="#">shuttledeck</a>
-    <a class="game-button" href="#">sleepingbeauty</a>
-    <a class="game-button" href="#">slitherio</a>
-    <a class="game-button" href="#">slope</a>
-    <a class="game-button" href="#">slope2</a>
-    <a class="game-button" href="#">snake</a>
-    <a class="game-button" href="#">snowbattle</a>
-    <a class="game-button" href="#">soccerrandom</a>
-    <a class="game-button" href="#">solitaire</a>
-    <a class="game-button" href="#">spacecompany</a>
-    <a class="game-button" href="#">spacegarden</a>
-    <a class="game-button" href="#">spacehuggers</a>
-    <a class="game-button" href="#">spaceinvaders</a>
-    <a class="game-button" href="#">stack</a>
-    <a class="game-button" href="#">stackball</a>
-    <a class="game-button" href="#">stickman-hook</a>
-    <a class="game-button" href="#">stickmanboost</a>
-    <a class="game-button" href="#">stickmanclimb</a>
-    <a class="game-button" href="#">stickmangolf</a>
-    <a class="game-button" href="#">stickmanhook</a>
-    <a class="game-button" href="#">stickmansurvival</a>
-    <a class="game-button" href="#">subwaysurfers</a>
-    <a class="game-button" href="#">subwaysurfersny</a>
-    <a class="game-button" href="#">subwaysurferssingapore</a>
-    <a class="game-button" href="#">tetris</a>
-    <a class="game-button" href="#">themazeofspacegoblins</a>
-    <a class="game-button" href="#">timeshooter</a>
-    <a class="game-button" href="#">timeshooter2</a>
-    <a class="game-button" href="#">timeshooter3</a>
-    <a class="game-button" href="#">tinyfishing</a>
-    <a class="game-button" href="#">tombofthemask</a>
-    <a class="game-button" href="#">topspeedracing3d</a>
-    <a class="game-button" href="#">towermaster</a>
-    <a class="game-button" href="#">trimps</a>
-    <a class="game-button" href="#">tunnelrush</a>
-    <a class="game-button" href="#">vex3</a>
-    <a class="game-button" href="#">vex4</a>
-    <a class="game-button" href="#">vex5</a>
-    <a class="game-button" href="#">vex6</a>
-    <a class="game-button" href="#">webecomewhatwebehold</a>
-    <a class="game-button" href="#">worldshardestgame2</a>
-    <a class="game-button" href="#">xx142b2exe</a>
-    <a class="game-button" href="#">zombsroyale</a>
-</div>
+<script>
+    const DEFAULT_PASSWORD = "letmein";
+    const SPECIAL_PASSWORD = "starwars";
+
+    function checkPassword() {
+        const input = document.getElementById('pass').value.toLowerCase();
+        const error = document.getElementById('errorMsg');
+
+        if(input === DEFAULT_PASSWORD) {
+            window.location.href = "lusheng.html";
+        } else if(input === SPECIAL_PASSWORD) {
+            window.location.href = "StarWarsMovie.html";
+        } else {
+            error.style.display = "block";
+        }
+    }
+
+    // Press Enter to submit
+    document.getElementById('pass').addEventListener('keyup', function(e) {
+        if(e.key === "Enter") checkPassword();
+    });
+
+    // Make "Da Cheese" follow the mouse
+    const title = document.getElementById('title');
+    document.addEventListener('mousemove', e => {
+        const x = e.clientX / window.innerWidth - 0.5;
+        const y = e.clientY / window.innerHeight - 0.5;
+        title.style.transform = `translate(${x*30}px, ${y*30}px) rotate(${x*10}deg)`;
+    });
+</script>
 
 </body>
 </html>
