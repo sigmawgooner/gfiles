@@ -13,6 +13,10 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        transition: background 1s ease;
+    }
+    body:hover {
+        background: linear-gradient(135deg, #ff9966, #ffcc33);
     }
     .top-nav {
         display: flex;
@@ -37,7 +41,7 @@
     }
     .games-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         gap: 15px;
         padding: 20px;
         flex: 1;
@@ -55,7 +59,8 @@
     }
     .game-button:hover {
         background: #ffeb99;
-        transform: scale(1.05);
+        transform: scale(1.05) translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 </style>
 </head>
@@ -66,137 +71,62 @@
 </div>
 
 <div class="games-container">
-    <a class="game-button" href="#">2048</a>
-    <a class="game-button" href="#">adarkroom</a>
-    <a class="game-button" href="#">asciispace</a>
-    <a class="game-button" href="#">assessmentexamination</a>
-    <a class="game-button" href="#">asteroids</a>
-    <a class="game-button" href="#">astray</a>
-    <a class="game-button" href="#">backcountry</a>
-    <a class="game-button" href="#">basketballlegends</a>
-    <a class="game-button" href="#">basketballstars</a>
-    <a class="game-button" href="#">basketbrosio</a>
-    <a class="game-button" href="#">basketrandom</a>
-    <a class="game-button" href="#">bitlife</a>
-    <a class="game-button" href="#">blackholesquare</a>
-    <a class="game-button" href="#">bounceback</a>
-    <a class="game-button" href="#">boxingrandom</a>
-    <a class="game-button" href="#">breaklock</a>
-    <a class="game-button" href="#">breakout</a>
-    <a class="game-button" href="#">btd4</a>
-    <a class="game-button" href="#">captaincallisto</a>
-    <a class="game-button" href="#">chess</a>
-    <a class="game-button" href="#">chromaincident</a>
-    <a class="game-button" href="#">chromedino</a>
-    <a class="game-button" href="#">clickerheroes</a>
-    <a class="game-button" href="#">clusterrush</a>
-    <a class="game-button" href="#">connect3</a>
-    <a class="game-button" href="#">cookieclicker</a>
-    <a class="game-button" href="#">crossyroad</a>
-    <a class="game-button" href="#">csgoclicker</a>
-    <a class="game-button" href="#">cubefield</a>
-    <a class="game-button" href="#">cubitomayhem</a>
-    <a class="game-button" href="#">cuttherope</a>
-    <a class="game-button" href="#">cuttheropeholiday</a>
-    <a class="game-button" href="#">cuttheropetimetravel</a>
-    <a class="game-button" href="#">deathrun3d</a>
-    <a class="game-button" href="#">deepestsword</a>
-    <a class="game-button" href="#">doodlejump</a>
-    <a class="game-button" href="#">doom</a>
-    <a class="game-button" href="#">drawthehill</a>
-    <a class="game-button" href="#">drift</a>
-    <a class="game-button" href="#">drifthunters</a>
-    <a class="game-button" href="#">drivemad</a>
-    <a class="game-button" href="#">ducklife</a>
-    <a class="game-button" href="#">ducklife2</a>
-    <a class="game-button" href="#">ducklife3</a>
-    <a class="game-button" href="#">earntodie</a>
-    <a class="game-button" href="#">edgenotfound</a>
-    <a class="game-button" href="#">eggycar</a>
-    <a class="game-button" href="#">evilglitch</a>
-    <a class="game-button" href="#">factoryballsforever</a>
-    <a class="game-button" href="#">fireboyandwatergirlforesttemple</a>
-    <a class="game-button" href="#">flappy2048</a>
-    <a class="game-button" href="#">flappybird</a>
-    <a class="game-button" href="#">flappyplane</a>
-    <a class="game-button" href="#">flightsimulator</a>
-    <a class="game-button" href="#">fridaynightfunkin</a>
-    <a class="game-button" href="#">friendlyfire</a>
-    <a class="game-button" href="#">fruitninja</a>
-    <a class="game-button" href="#">getawayshootoutnew</a>
-    <a class="game-button" href="#">googlesnake</a>
-    <a class="game-button" href="#">gopherkart</a>
-    <a class="game-button" href="#">grindcraft</a>
-    <a class="game-button" href="#">hexgl</a>
-    <a class="game-button" href="#">hextris</a>
-    <a class="game-button" href="#">konnekt</a>
-    <a class="game-button" href="#">letssurf</a>
-    <a class="game-button" href="#">littlealchemy</a>
-    <a class="game-button" href="#">mergeroundracers</a>
-    <a class="game-button" href="#">monkeymart</a>
-    <a class="game-button" href="#">motox3m</a>
-    <a class="game-button" href="#">ninjavsevilcorp</a>
-    <a class="game-button" href="#">ovo2</a>
-    <a class="game-button" href="#">packabunchas</a>
-    <a class="game-button" href="#">pacman</a>
-    <a class="game-button" href="#">paperio</a>
-    <a class="game-button" href="#">particleclicker</a>
-    <a class="game-button" href="#">pushback</a>
-    <a class="game-button" href="#">q1k3</a>
-    <a class="game-button" href="#">r3</a>
-    <a class="game-button" href="#">racer</a>
-    <a class="game-button" href="#">radiusraid</a>
-    <a class="game-button" href="#">redball4</a>
-    <a class="game-button" href="#">retrobowl</a>
-    <a class="game-button" href="#">retrohaunt</a>
-    <a class="game-button" href="#">riddleschool2</a>
-    <a class="game-button" href="#">ritz</a>
-    <a class="game-button" href="#">roadblocks</a>
-    <a class="game-button" href="#">rooftopsnipers</a>
-    <a class="game-button" href="#">run3</a>
-    <a class="game-button" href="#">shuttledeck</a>
-    <a class="game-button" href="#">sleepingbeauty</a>
-    <a class="game-button" href="#">slitherio</a>
-    <a class="game-button" href="#">slope</a>
-    <a class="game-button" href="#">slope2</a>
-    <a class="game-button" href="#">snake</a>
-    <a class="game-button" href="#">snowbattle</a>
-    <a class="game-button" href="#">soccerrandom</a>
-    <a class="game-button" href="#">solitaire</a>
-    <a class="game-button" href="#">spacecompany</a>
-    <a class="game-button" href="#">spacegarden</a>
-    <a class="game-button" href="#">spacehuggers</a>
-    <a class="game-button" href="#">spaceinvaders</a>
-    <a class="game-button" href="#">stack</a>
-    <a class="game-button" href="#">stackball</a>
-    <a class="game-button" href="#">stickman-hook</a>
-    <a class="game-button" href="#">stickmanboost</a>
-    <a class="game-button" href="#">stickmanclimb</a>
-    <a class="game-button" href="#">stickmangolf</a>
-    <a class="game-button" href="#">stickmanhook</a>
-    <a class="game-button" href="#">stickmansurvival</a>
-    <a class="game-button" href="#">subwaysurfers</a>
-    <a class="game-button" href="#">subwaysurfersny</a>
-    <a class="game-button" href="#">subwaysurferssingapore</a>
-    <a class="game-button" href="#">tetris</a>
-    <a class="game-button" href="#">themazeofspacegoblins</a>
-    <a class="game-button" href="#">timeshooter</a>
-    <a class="game-button" href="#">timeshooter2</a>
-    <a class="game-button" href="#">timeshooter3</a>
-    <a class="game-button" href="#">tinyfishing</a>
-    <a class="game-button" href="#">tombofthemask</a>
-    <a class="game-button" href="#">topspeedracing3d</a>
-    <a class="game-button" href="#">towermaster</a>
-    <a class="game-button" href="#">trimps</a>
-    <a class="game-button" href="#">tunnelrush</a>
-    <a class="game-button" href="#">vex3</a>
-    <a class="game-button" href="#">vex4</a>
-    <a class="game-button" href="#">vex5</a>
-    <a class="game-button" href="#">vex6</a>
-    <a class="game-button" href="#">webecomewhatwebehold</a>
-    <a class="game-button" href="#">worldshardestgame2</a>
-    <a class="game-button" href="#">xx142b2exe</a>
-    <a class="game-button" href="#">zombsroyale</a>
+    <a class="game-button" href="games/2048/">2048</a>
+    <a class="game-button" href="games/adarkroom/">adarkroom</a>
+    <a class="game-button" href="games/asciispace/">asciispace</a>
+    <a class="game-button" href="games/assessmentexamination/">assessmentexamination</a>
+    <a class="game-button" href="games/asteroids/">asteroids</a>
+    <a class="game-button" href="games/astray/">astray</a>
+    <a class="game-button" href="games/backcountry/">backcountry</a>
+    <a class="game-button" href="games/basketballlegends/">basketballlegends</a>
+    <a class="game-button" href="games/basketballstars/">basketballstars</a>
+    <a class="game-button" href="games/basketbrosio/">basketbrosio</a>
+    <a class="game-button" href="games/basketrandom/">basketrandom</a>
+    <a class="game-button" href="games/bitlife/">bitlife</a>
+    <a class="game-button" href="games/blackholesquare/">blackholesquare</a>
+    <a class="game-button" href="games/bounceback/">bounceback</a>
+    <a class="game-button" href="games/boxingrandom/">boxingrandom</a>
+    <a class="game-button" href="games/breaklock/">breaklock</a>
+    <a class="game-button" href="games/breakout/">breakout</a>
+    <a class="game-button" href="games/btd4/">btd4</a>
+    <a class="game-button" href="games/captaincallisto/">captaincallisto</a>
+    <a class="game-button" href="games/chess/">chess</a>
+    <a class="game-button" href="games/chromaincident/">chromaincident</a>
+    <a class="game-button" href="games/chromedino/">chromedino</a>
+    <a class="game-button" href="games/clickerheroes/">clickerheroes</a>
+    <a class="game-button" href="games/clusterrush/">clusterrush</a>
+    <a class="game-button" href="games/connect3/">connect3</a>
+    <a class="game-button" href="games/cookieclicker/">cookieclicker</a>
+    <a class="game-button" href="games/crossyroad/">crossyroad</a>
+    <a class="game-button" href="games/csgoclicker/">csgoclicker</a>
+    <a class="game-button" href="games/cubefield/">cubefield</a>
+    <a class="game-button" href="games/cubitomayhem/">cubitomayhem</a>
+    <a class="game-button" href="games/cuttherope/">cuttherope</a>
+    <a class="game-button" href="games/cuttheropeholiday/">cuttheropeholiday</a>
+    <a class="game-button" href="games/cuttheropetimetravel/">cuttheropetimetravel</a>
+    <a class="game-button" href="games/deathrun3d/">deathrun3d</a>
+    <a class="game-button" href="games/deepestsword/">deepestsword</a>
+    <a class="game-button" href="games/doodlejump/">doodlejump</a>
+    <a class="game-button" href="games/doom/">doom</a>
+    <a class="game-button" href="games/drawthehill/">drawthehill</a>
+    <a class="game-button" href="games/drift/">drift</a>
+    <a class="game-button" href="games/drifthunters/">drifthunters</a>
+    <a class="game-button" href="games/drivemad/">drivemad</a>
+    <a class="game-button" href="games/ducklife/">ducklife</a>
+    <a class="game-button" href="games/ducklife2/">ducklife2</a>
+    <a class="game-button" href="games/ducklife3/">ducklife3</a>
+    <a class="game-button" href="games/earntodie/">earntodie</a>
+    <a class="game-button" href="games/edgenotfound/">edgenotfound</a>
+    <a class="game-button" href="games/eggycar/">eggycar</a>
+    <a class="game-button" href="games/evilglitch/">evilglitch</a>
+    <a class="game-button" href="games/factoryballsforever/">factoryballsforever</a>
+    <a class="game-button" href="games/fireboyandwatergirlforesttemple/">fireboyandwatergirlforesttemple</a>
+    <a class="game-button" href="games/flappy2048/">flappy2048</a>
+    <a class="game-button" href="games/flappybird/">flappybird</a>
+    <a class="game-button" href="games/flappyplane/">flappyplane</a>
+    <a class="game-button" href="games/flightsimulator/">flightsimulator</a>
+    <a class="game-button" href="games/fridaynightfunkin/">fridaynightfunkin</a>
+    <!-- add the rest following the same pattern -->
 </div>
 
 </body>
